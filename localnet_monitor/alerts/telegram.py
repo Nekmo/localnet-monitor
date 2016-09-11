@@ -9,7 +9,6 @@ class Telegram(object):
 
     def send_alert(self, device, status=True):
         status = b'\xe2\x9c\x85' if status else b'\xE2\x9D\x8C'
-        body = '%(status)s {name} ({mac}) {ip}'.format(**device)
-        body = body.encode('utf-8')
-        body = body % {b'status': status}
+        body = '{name} ({mac}) {ip}'.format(**device)
+        body = status + b' ' + body.encode('utf-8')
         self.bot.send_message(self.config['userid'], body)
