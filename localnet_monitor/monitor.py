@@ -51,7 +51,6 @@ class Monitor(object):
         return devs
 
     def alert_blacklist(self, device, connected=True):
-        print('Alert: {} {}'.format(device, connected))
         self.send_alert(device, connected)
 
     def send_alert(self, device, connected=True):
