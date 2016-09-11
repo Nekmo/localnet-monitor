@@ -45,7 +45,7 @@ class Monitor(object):
 
     def get_devices(self):
         devs = []
-        for _devs in scan_networks():
+        for _devs in scan_networks(interface=self.config.get('config', {}).get('interface')):
             devs.extend(_devs)
         self.set_devices_params(devs)
         return devs
