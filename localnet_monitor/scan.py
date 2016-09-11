@@ -31,10 +31,11 @@ def update_devices(devices, device):
         devices.append(device)
 
 
-def scan_network(network='local', interface=None):
+def scan_network(network='local', interface=None, sudo=True):
     interface = interface or get_default_interface()
     net_param = '--localnet' if network == 'local' else ''
-    output = check_output(['sudo', BINARY, '--interface={}'.format(interface), net_param]).decode('utf-8')
+    output = check_output((['sudo'] if sudo else []) + \
+                          [BINARY, '--interface={}'.format(interface), net_param]).decode('utf-8')
     devices = []
     for device in output.split('\n'):
         device = process_line(device)
@@ -43,6 +44,6 @@ def scan_network(network='local', interface=None):
     return devices
 
 
-def scan_networks(networks=None, interface=None):
+def scan_networks(networks=None, interface=None, sudo=True):
     for network in networks or ['local']:
-        yield scan_network(network, interface)
+        yield scan_network(network, interface, sudo)

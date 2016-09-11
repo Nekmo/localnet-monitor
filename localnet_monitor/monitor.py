@@ -22,6 +22,7 @@ class Monitor(object):
         self.devices = []
         self.blacklist = self.config.get('blacklist', {})
         self.whitelist = self.config.get('whitelist', {})
+        self.config_sect = self.config.get('config', {})
         self.devices_connected = []
         self.disconnect_count = {}
         self.alerts = self.get_alerts()
@@ -45,7 +46,8 @@ class Monitor(object):
 
     def get_devices(self):
         devs = []
-        for _devs in scan_networks(interface=self.config.get('config', {}).get('interface')):
+        for _devs in scan_networks(interface=self.config_sect.get('interface'),
+                                   sudo=self.config_sect.get('sudo', True)):
             devs.extend(_devs)
         self.set_devices_params(devs)
         return devs
