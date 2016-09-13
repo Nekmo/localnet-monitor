@@ -38,40 +38,16 @@ def first_path_exist(paths):
 # 3. Cambie el archivo LICENSE.txt por el de su licencia.
 # 4. Añada un archivo README, README.rst o README.md, el cual se trata de la la descripción extendida.
 
-ENABLED_MONITORS_DIR = '/etc/simple-monitor-alert/monitors-enabled'
-AVAILABLE_MONITORS_DIR = '/etc/simple-monitor-alert/monitors-available'
-MONITORS_DIR = '/usr/lib/simple-monitor-alert/monitors'
-ALERTS_DIR = '/usr/lib/simple-monitor-alert/alerts'
-AVAILABLE_ALERTS_DIR = '/etc/simple-monitor-alert/alerts'
-SMA_TEMPLATE_FILENAME = 'sma-template.ini'
-SMA_FILE = '/etc/simple-monitor-alert/sma.ini'
-DEFAULT_ENABLEDS_MONITORS = ['hdds.sh', 'system.sh']
-USERNAME = 'sma'
-VAR_DIRECTORY = '/var/lib/simple-monitor-alert'
-
-SERVICES = [
-    (
-        'services/sma.service',
-        '{}/sma.service'.format(first_path_exist(['/usr/lib/systemd/system', '/lib/systemd/system']))
-    ),
-    (
-        'services/sma.sh',
-        '/etc/init.d/sma.sh'
-    )
-]
-
-#  Información del autor
-from setuptools.command.install import install
 
 AUTHOR = 'Nekmo'
 EMAIL = 'contacto@nekmo.com'
 
 # Información del paquete
-PACKAGE_NAME = 'simple-monitor-alert'
-PACKAGE_DOWNLOAD_URL = 'https://github.com/Nekmo/simple-monitor-alert/archive/master.zip'  # .tar.gz
-URL = 'https://github.com/Nekmo/simple-monitor-alert'  # Project url
+PACKAGE_NAME = 'localnet-monitor'
+PACKAGE_DOWNLOAD_URL = 'https://github.com/Nekmo/localnet-monitor/archive/master.zip'  # .tar.gz
+URL = 'https://github.com/Nekmo/localnet-monitor'  # Project url
 STATUS_LEVEL = 1  # 1:Planning 2:Pre-Alpha 3:Alpha 4:Beta 5:Production/Stable 6:Mature 7:Inactive
-KEYWORDS = ['linux', 'unix', 'monitor', 'alert', 'simple-monitor-alert', 'notifications', 'email', 'telegram']
+KEYWORDS = ['monitor', 'network', 'devices', 'alert', 'localnet-monitor', 'telegram']
 # https://github.com/github/choosealicense.com/tree/gh-pages/_licenses
 LICENSE = 'MIT'
 CLASSIFIERS = [
@@ -88,7 +64,8 @@ CLASSIFIERS = [
 ]  # https://pypi.python.org/pypi?%3Aaction=list_classifiers
 NATURAL_LANGUAGE = 'English'  # English...
 DESCRIPTION = """\
-A simple monitor with alerts for Unix/Linux under the KISS philosophy. Keep It Simple, Stupid!
+Get an alert when a new device connects to the network. You also receive an alert when
+the device is disconnected.
 """
 
 # Requerido para la correcta instalación del paquete
